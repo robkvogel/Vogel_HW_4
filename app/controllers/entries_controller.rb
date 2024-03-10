@@ -1,6 +1,19 @@
 class EntriesController < ApplicationController
 
+  def index
+    @entry = Entry.all
+
+    respond_to do |format|
+      format.html # helps render posts/index.html.erb
+      format.json do
+        render :json => @entry
+      end
+    end
+  end
+
+
   def new
+    @entry = Entry.new
   end
 
   def create
@@ -9,6 +22,7 @@ class EntriesController < ApplicationController
     @entry["description"] = params["description"]
     @entry["occurred_on"] = params["occurred_on"]
     @entry["place_id"] = params["place_id"]
+    @entry["user_id"] = @current_user["id"]
     @entry.save
     redirect_to "/places/#{@entry["place_id"]}"
   end
