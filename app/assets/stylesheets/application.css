@@ -1,1 +1,7 @@
 /* Application styles */
+.square-img {
+  width: 100%; /* Causes the image to fill the container */
+  height: auto; /* Adjusts height automatically */
+  object-fit: cover; /* Ensure the aspect ratio is maintained without distorting the image */
+  aspect-ratio: 1 / 1; /* Make the image square */
+}
